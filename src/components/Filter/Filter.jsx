@@ -1,4 +1,4 @@
-import { filterContact } from '../../redux/actions';
+import { filterContact } from '../../redux/filter/actions';
 import { useDispatch } from 'react-redux';
 import { FilterInput, FilterWrapper } from './FilterStyle';
 import { LabelForm } from '../ContactForm/ContactFormStyle';

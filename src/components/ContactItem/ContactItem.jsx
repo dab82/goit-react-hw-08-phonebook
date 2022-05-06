@@ -3,14 +3,14 @@ import { ReactComponent as DeleteIcon } from '../../Icon/delicon.svg';
 import { IconButton } from '../Buttons/IconButton';
 import { useRemoveContactsMutation } from 'redux/api/contactsApi';
 import propTypes from 'prop-types';
-import { Loader } from 'components/Loader/Loader';
+import { SpinnerDotted } from 'spinners-react';
 
 export const ContactItem = ({ id, name, number }) => {
   const [removeContacts, { isLoading }] = useRemoveContactsMutation();
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <SpinnerDotted />}
       <Item>
         <Name>{name}:</Name>
         <PhoneNumber>{number} </PhoneNumber>

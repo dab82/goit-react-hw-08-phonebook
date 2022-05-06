@@ -8,7 +8,7 @@ import {
   useAddContactsMutation,
 } from 'redux/api/contactsApi';
 import propTypes from 'prop-types';
-import { Loader } from 'components/Loader/Loader';
+import { SpinnerDotted } from 'spinners-react';
 
 const initialValues = {
   name: '',
@@ -33,6 +33,7 @@ export const ContactForm = () => {
     );
     if (nameInContacts) {
       toast.warn(`${name} is already in contacts`);
+      resetForm();
       return;
     }
 
@@ -43,7 +44,7 @@ export const ContactForm = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <SpinnerDotted />}
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <AddForm autoComplete="off">
           <div>

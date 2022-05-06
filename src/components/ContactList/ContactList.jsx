@@ -5,8 +5,8 @@ import { List, Total } from './ContactListStyle';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
-import { Loader } from 'components/Loader/Loader';
-import { getFilter } from '../../redux/selector';
+import { SpinnerDotted } from 'spinners-react';
+import { getFilter } from '../../redux/filter/selector';
 
 export const ContactList = () => {
   const filter = useSelector(getFilter);
@@ -30,7 +30,7 @@ export const ContactList = () => {
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <SpinnerDotted />}
       {showContacts && (
         <List>
           <Total>Total contacts: {visibleContacts.length}</Total>
