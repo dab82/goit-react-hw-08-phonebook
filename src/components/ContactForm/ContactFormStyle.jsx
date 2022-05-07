@@ -6,7 +6,7 @@ export const AddForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 420px;
+
   padding: 20px;
   border-radius: 5px;
   background-color: ${props => props.theme.colors.greyBg};
@@ -17,10 +17,9 @@ export const AddForm = styled(Form)`
 export const Input = styled(Field)`
   border: 0;
   outline: 0;
-  width: 80%;
   margin-bottom: 10px;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 20px;
   background-color: ${props => props.theme.colors.buttonBg};
   ${font({ fs: 16, fw: 400, lh: 20 })};
   box-shadow: inset 2px 2px 5px ${props => props.theme.colors.colorShadow},

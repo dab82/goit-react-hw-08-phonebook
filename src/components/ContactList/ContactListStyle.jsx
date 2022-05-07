@@ -3,7 +3,7 @@ import { font, widthHeight } from '../../mainstyle/mixins';
 
 export const List = styled.ol`
   padding: 20px;
-  max-width: 400px;
+
   overflow-y: hidden;
 
   ${font({ fs: 16, fw: 400, lh: 20 })};

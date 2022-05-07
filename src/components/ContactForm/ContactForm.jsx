@@ -8,7 +8,7 @@ import {
   useAddContactsMutation,
 } from 'redux/api/contactsApi';
 import propTypes from 'prop-types';
-import { SpinnerDotted } from 'spinners-react';
+import { SpinnerInfinity } from 'spinners-react';
 
 const initialValues = {
   name: '',
@@ -44,38 +44,46 @@ export const ContactForm = () => {
 
   return (
     <>
-      {isLoading && <SpinnerDotted />}
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <AddForm autoComplete="off">
-          <div>
-            <LabelForm htmlFor="name">Name</LabelForm>
-            <div>
-              <Input
-                type="text"
-                name="name"
-                // placeholder="Text..."
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-              />
-              <FormError name="name" />
-            </div>
-          </div>
-          <div>
-            <LabelForm htmlFor="number">Number</LabelForm>
-            <div>
-              <Input
-                type="tel"
-                name="number"
-                // placeholder="Number..."
-                pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-              />
-              <FormError name="number" />
-            </div>
-          </div>
-          <Button type="submit" disabled={isLoading} text={'Add contact'} />
+          <LabelForm htmlFor="name">Name</LabelForm>
+
+          <Input
+            type="text"
+            name="name"
+            placeholder="type name..."
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+          />
+          <FormError name="name" />
+
+          <LabelForm htmlFor="number">Number</LabelForm>
+
+          <Input
+            type="tel"
+            name="number"
+            placeholder="type number..."
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+          />
+          <FormError name="number" />
+
+          <Button
+            text={
+              isLoading ? (
+                <SpinnerInfinity
+                  сolor="#910ac7"
+                  secondaryColor="rgba(0,0,0,0.1)"
+                  thickness="80"
+                  speed="200"
+                />
+              ) : (
+                'Add contact'
+              )
+            }
+          />
         </AddForm>
       </Formik>
     </>

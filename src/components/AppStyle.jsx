@@ -3,7 +3,7 @@ import { centerBlock, font, widthHeight } from '../mainstyle/mixins';
 export const Container = styled.div`
   padding: 40px 30px;
   ${centerBlock};
-  height: 100vh;
+  /* height: 100vh; */
   max-width: 480px;
   border-radius: 20px;
   background-color: ${props => props.theme.colors.colorBg};

@@ -7,10 +7,16 @@ import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
 import { SpinnerDotted } from 'spinners-react';
 import { getFilter } from '../../redux/filter/selector';
+import { authSelectors } from 'redux/auth';
 
 export const ContactList = () => {
+  const isFetching = useSelector(authSelectors.getIsFetchingCurrent);
+  const token = useSelector(authSelectors.getToken);
   const filter = useSelector(getFilter);
-  const { data: contacts, error, isLoading } = useFetchContactsQuery();
+  const { data: contacts, error, isLoading, refetch } = useFetchContactsQuery();
+  useEffect(() => {
+    refetch();
+  }, [token, isFetching, refetch]);
 
   const normalizedFilter = filter.toLowerCase();
   let visibleContacts = [];
