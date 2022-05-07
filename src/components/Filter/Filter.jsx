@@ -11,9 +11,7 @@ export const Filter = () => {
   return (
     <FilterWrapper>
       <LabelForm htmlFor="filter">Find contacts by name</LabelForm>
-      <div>
-        <FilterInput name="filter" type="text" onChange={handleChange} />
-      </div>
+      <FilterInput name="filter" type="text" onChange={handleChange} />
     </FilterWrapper>
   );
 };

@@ -18,8 +18,11 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     gap: 'unset',
-    borderRadius: '50px',
-    backgroundColor: 'red',
+    fontSize: 'x-large',
+    fontWeight: 'bold',
+    borderRadius: '50%',
+    border: '1px solid #024972',
+    backgroundColor: '#4299c2',
   },
   button: {
     marginLeft: '10px',
@@ -41,7 +44,7 @@ export default function UserMenu() {
         style={styles.button}
         onClick={() => dispatch(authOperations.logOut())}
       >
-        <FaSignInAlt size="40" />
+        <FaSignInAlt size="30" />
       </button>
     </div>
   );

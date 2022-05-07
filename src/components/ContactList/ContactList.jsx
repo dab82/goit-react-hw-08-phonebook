@@ -5,56 +5,39 @@ import { List, Total } from './ContactListStyle';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
-// import { SpinnerDotted } from 'spinners-react';
-import { getFilter } from '../../redux/filter/selector';
+import { SpinnerDotted } from 'spinners-react';
 import { authSelectors } from 'redux/auth';
+import { getvisibleContacts } from 'redux/filter/selector';
 
 export const ContactList = () => {
   const token = useSelector(authSelectors.getToken);
-  const filter = useSelector(getFilter);
-  const {
-    data: contacts,
-    error,
-    isFetching,
-    refetch,
-  } = useFetchContactsQuery();
-
+  const { data, isFetching, error, refetch } = useFetchContactsQuery();
   useEffect(() => {
-    if (!token) {
-      refetch();
-    }
+    refetch();
   }, [token, refetch]);
 
-  const normalizedFilter = filter.toLowerCase();
-  let visibleContacts = [];
-
-  if (contacts) {
-    visibleContacts = contacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter)
-    );
-  }
   useEffect(() => {
     if (error) {
       toast.error(`Server error`);
     }
   }, [error]);
 
-  const showContacts = !isFetching && !error && contacts;
+  const visibleContacts = useSelector(state => getvisibleContacts(state, data));
 
   return (
     <>
-      {/* {isFetching && <SpinnerDotted />} */}
-      {showContacts && (
-        <List>
-          <Total>Total contacts: {visibleContacts.length}</Total>
+      {isFetching && !visibleContacts && <SpinnerDotted />}
 
-          {visibleContacts
+      {/* <Total>Total contacts: {data.length}</Total> */}
+
+      <List>
+        {visibleContacts &&
+          visibleContacts
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(({ id, name, number }) => (
-              <ContactItem key={id} name={name} id={id} number={number} />
+              <ContactItem name={name} key={id} id={id} number={number} />
             ))}
-        </List>
-      )}
+      </List>
     </>
   );
 };

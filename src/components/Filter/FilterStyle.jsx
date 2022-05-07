@@ -4,9 +4,8 @@ import { font } from '../../mainstyle/mixins';
 export const FilterInput = styled.input`
   border: 0;
   outline: 0;
-  width: 100%;
   border-radius: 20px;
-  padding: 10px;
+  padding: 10px 20px;
   background-color: ${props => props.theme.colors.buttonBg};
   ${font({ fs: 16, fw: 500, lh: 20 })};
   box-shadow: inset 2px 2px 5px ${props => props.theme.colors.colorShadow},
@@ -20,7 +19,9 @@ export const FilterInput = styled.input`
   }
 `;
 
-export const FilterWrapper = styled.div`
-  max-width: 400px;
+export const FilterWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
+  padding: 20px;
 `;
