@@ -16,7 +16,7 @@ import HomePage from 'pages/HomePage/HomePege';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isFetching = useSelector(authSelectors.getIsFetchingCurrent);
+  const isFetchingUser = useSelector(authSelectors.getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
@@ -24,7 +24,7 @@ export const App = () => {
   return (
     <Container>
       <GlobalStyle />
-      {isFetching ? (
+      {isFetchingUser ? (
         <SpinnerDotted />
       ) : (
         <>

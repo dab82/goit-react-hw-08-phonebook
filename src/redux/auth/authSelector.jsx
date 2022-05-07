@@ -12,4 +12,5 @@ const authSelectors = {
   getIsFetchingCurrent,
   getToken,
 };
+
 export default authSelectors;

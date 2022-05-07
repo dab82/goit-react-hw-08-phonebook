@@ -71,6 +71,7 @@ export const ContactForm = () => {
           <FormError name="number" />
 
           <Button
+            type="submit"
             text={
               isLoading ? (
                 <SpinnerInfinity

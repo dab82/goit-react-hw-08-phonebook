@@ -5,18 +5,25 @@ import { List, Total } from './ContactListStyle';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
-import { SpinnerDotted } from 'spinners-react';
+// import { SpinnerDotted } from 'spinners-react';
 import { getFilter } from '../../redux/filter/selector';
 import { authSelectors } from 'redux/auth';
 
 export const ContactList = () => {
-  const isFetching = useSelector(authSelectors.getIsFetchingCurrent);
   const token = useSelector(authSelectors.getToken);
   const filter = useSelector(getFilter);
-  const { data: contacts, error, isLoading, refetch } = useFetchContactsQuery();
+  const {
+    data: contacts,
+    error,
+    isFetching,
+    refetch,
+  } = useFetchContactsQuery();
+
   useEffect(() => {
-    refetch();
-  }, [token, isFetching, refetch]);
+    if (!token) {
+      refetch();
+    }
+  }, [token, refetch]);
 
   const normalizedFilter = filter.toLowerCase();
   let visibleContacts = [];
@@ -32,11 +39,11 @@ export const ContactList = () => {
     }
   }, [error]);
 
-  const showContacts = !isLoading && !error && contacts;
+  const showContacts = !isFetching && !error && contacts;
 
   return (
     <>
-      {isLoading && <SpinnerDotted />}
+      {/* {isFetching && <SpinnerDotted />} */}
       {showContacts && (
         <List>
           <Total>Total contacts: {visibleContacts.length}</Total>
