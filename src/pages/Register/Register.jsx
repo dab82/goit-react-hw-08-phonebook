@@ -1,21 +1,14 @@
 import { useState } from 'react';
-
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperation';
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-  button: {
-    border: '1px solid red',
-    borderRadius: 10,
-    padding: 10,
-  },
+import { Formik } from 'formik';
+import { SignInForm, Input, LabelForm } from '../PagesStyle';
+import { Button } from 'components/Buttons/Button';
+
+const initialValues = {
+  name: '',
+  number: '',
+  filter: '',
 };
 
 const Register = () => {
@@ -48,37 +41,38 @@ const Register = () => {
   return (
     <div>
       <h1>Страница регистрации</h1>
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <SignInForm autoComplete="off">
+          <LabelForm>Имя </LabelForm>
+          <Input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-
-        <label style={styles.label}>
-          Почта
-          <input
+          <LabelForm>Почта </LabelForm>
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            required
           />
-        </label>
 
-        <label style={styles.label}>
-          Пароль
-          <input
+          <LabelForm>Пароль</LabelForm>
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            required
           />
-        </label>
 
-        <button type="submit" style={styles.button}>
-          Зарегистрироваться
-        </button>
-      </form>
+          <Button type="submit" text=" Зарегистрироваться" />
+        </SignInForm>
+      </Formik>
     </div>
   );
 };

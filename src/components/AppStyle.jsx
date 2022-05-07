@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 import { centerBlock, font, widthHeight } from '../mainstyle/mixins';
+
 export const Container = styled.div`
   padding: 40px 30px;
   ${centerBlock};
-  /* height: 100vh; */
-  max-width: 480px;
-  border-radius: 20px;
-  background-color: ${props => props.theme.colors.colorBg};
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.22), 0px 2px 2px rgba(0, 0, 0, 0.24),
-    0px 3px 5px rgba(0, 0, 0, 0.52);
+  max-width: 500px;
 `;
 
 export const MainTitle = styled.h1`

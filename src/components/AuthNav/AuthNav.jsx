@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const styles = {
   display: 'inline-block',
   textDecoration: 'none',
-  padding: 12,
+  padding: '0 10px',
   fontWeight: 700,
   color: '#290249',
 };
@@ -12,7 +12,7 @@ const styles = {
 let activeStyle = {
   display: 'inline-block',
   textDecoration: 'none',
-  padding: 12,
+  padding: '0 10px',
   fontWeight: 700,
   color: '#b90b7f',
   borderBottom: '3px solid rgb(132, 10, 148)',

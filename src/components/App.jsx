@@ -12,7 +12,7 @@ import PrivateRoute from 'route/PrivatRoute';
 import Login from 'pages/Login/Login';
 import Register from 'pages/Register/Register';
 import PhoneBook from 'pages/PhoneBook/PhoneBook';
-import HomePage from 'pages/HomePage/HomePege';
+import HomePage from 'pages/HomePage/HomePage';
 
 export const App = () => {
   const dispatch = useDispatch();

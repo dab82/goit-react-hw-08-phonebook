@@ -1,21 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
+import { Formik } from 'formik';
+import { SignInForm, Input, LabelForm } from '../PagesStyle';
+import { Button } from 'components/Buttons/Button';
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-  button: {
-    border: '1px solid red',
-    borderRadius: 10,
-    padding: 10,
-  },
+const initialValues = {
+  name: '',
+  number: '',
+  filter: '',
 };
 
 const Login = () => {
@@ -34,8 +27,7 @@ const Login = () => {
     }
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     dispatch(authOperations.logIn({ email, password }));
     setEmail('');
     setPassword('');
@@ -44,32 +36,29 @@ const Login = () => {
   return (
     <div>
       <h1>Страница логина</h1>
-
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Почта
-          <input
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <SignInForm autoComplete="off">
+          <LabelForm>Почта </LabelForm>
+          <Input
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            required
           />
-        </label>
 
-        <label style={styles.label}>
-          Пароль
-          <input
+          <LabelForm>Пароль</LabelForm>
+          <Input
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            required
           />
-        </label>
 
-        <button type="submit" style={styles.button}>
-          Войти
-        </button>
-      </form>
+          <Button type="submit" text="Войти" />
+        </SignInForm>
+      </Formik>
     </div>
   );
 };

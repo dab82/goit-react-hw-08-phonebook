@@ -6,7 +6,6 @@ export const AddButton = styled.button`
   margin: 0 auto;
   align-items: center;
   height: 40px;
-  width: 50%;
   border-radius: 20px;
   ${font({ fs: 16, fw: 600, lh: 20 })};
   background-color: ${props => props.theme.colors.buttonBg};
