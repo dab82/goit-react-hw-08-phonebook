@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { List, Total } from './ContactListStyle';
+import { List } from './ContactListStyle';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
