@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 
 const styles = {
   container: {
-    minHeight: 'calc(100vh - 50px)',
+    minHeight: '75vh',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '20px',
+    padding: '10px',
   },
   title: {
     fontWeight: 500,

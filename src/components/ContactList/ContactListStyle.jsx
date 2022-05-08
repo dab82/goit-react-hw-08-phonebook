@@ -18,7 +18,6 @@ export const Total = styled.h2`
   ${widthHeight(240)};
   ${font({ fs: 24, fw: 600, lh: 28 })};
   margin-bottom: 10px;
-  /* margin-top: 10px; */
   color: ${props => props.theme.colors.primaryText};
   text-shadow: 1px 1px 1px ${props => props.theme.colors.white};
 `;

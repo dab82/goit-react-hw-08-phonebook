@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperation';
 import { Formik } from 'formik';
-import { SignInForm, Input, LabelForm } from '../PagesStyle';
+import { Wrapper, Titel, SignInForm, Input, LabelForm } from '../PagesStyle';
 import { Button } from 'components/Buttons/Button';
 
 const initialValues = {
@@ -31,7 +31,6 @@ const Register = () => {
   };
 
   const handleSubmit = e => {
-    e.preventDefault();
     dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
@@ -39,8 +38,8 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    <Wrapper>
+      <Titel>Страница регистрации</Titel>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <SignInForm autoComplete="off">
           <LabelForm>Имя </LabelForm>
@@ -73,7 +72,7 @@ const Register = () => {
           <Button type="submit" text=" Зарегистрироваться" />
         </SignInForm>
       </Formik>
-    </div>
+    </Wrapper>
   );
 };
 

@@ -13,10 +13,8 @@ const styles = {
 let activeStyle = {
   display: 'inline-block',
   textDecoration: 'none',
-
   fontWeight: 700,
   color: '#b90b7f',
-  borderBottom: '3px solid rgb(132, 10, 148)',
 };
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

@@ -26,9 +26,7 @@ export const ContactList = () => {
 
   return (
     <>
-      {isFetching && !visibleContacts && <SpinnerDotted />}
-
-      {/* <Total>Total contacts: {data.length}</Total> */}
+      {isFetching && !visibleContacts && <SpinnerDotted color="#055770" />}
 
       <List>
         {visibleContacts &&

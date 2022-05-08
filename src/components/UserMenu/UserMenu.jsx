@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations, authSelectors } from 'redux/auth';
 import { FaSignInAlt } from 'react-icons/fa';
-// import defaultAvatar from 'Icon/logo.png';
 
 const styles = {
   container: {
@@ -36,7 +35,6 @@ export default function UserMenu() {
 
   return (
     <div style={styles.container}>
-      {/* <img src={avatar} alt="" width="32" style={styles.avatar} /> */}
       <span style={styles.name}>{letter?.toUpperCase()}</span>
       <span>{name}</span>
       <button

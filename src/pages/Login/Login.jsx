@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
 import { Formik } from 'formik';
-import { SignInForm, Input, LabelForm } from '../PagesStyle';
+import { Wrapper, Titel, SignInForm, Input, LabelForm } from '../PagesStyle';
 import { Button } from 'components/Buttons/Button';
 
 const initialValues = {
@@ -34,8 +34,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    <Wrapper>
+      <Titel>Страница логина</Titel>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <SignInForm autoComplete="off">
           <LabelForm>Почта </LabelForm>
@@ -59,7 +59,7 @@ const Login = () => {
           <Button type="submit" text="Войти" />
         </SignInForm>
       </Formik>
-    </div>
+    </Wrapper>
   );
 };
 

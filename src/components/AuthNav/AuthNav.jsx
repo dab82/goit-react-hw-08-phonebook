@@ -15,7 +15,6 @@ let activeStyle = {
   padding: '0 10px',
   fontWeight: 700,
   color: '#b90b7f',
-  borderBottom: '3px solid rgb(132, 10, 148)',
 };
 
 const AuthNav = () => (

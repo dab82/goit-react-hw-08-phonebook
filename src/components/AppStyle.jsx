@@ -5,6 +5,7 @@ export const Container = styled.div`
   padding: 40px 30px;
   ${centerBlock};
   max-width: 500px;
+  position: relative;
 `;
 
 export const MainTitle = styled.h1`

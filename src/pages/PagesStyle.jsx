@@ -2,11 +2,21 @@ import { Form, Field } from 'formik';
 import styled from 'styled-components';
 import { font } from '../mainstyle/mixins';
 
+export const Wrapper = styled.div`
+  margin-top: 20px;
+  padding: 10px;
+  min-height: 75vh;
+`;
+
+export const Titel = styled.h1`
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
 export const SignInForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 20px;
   border-radius: 5px;
   background-color: ${props => props.theme.colors.greyBg};

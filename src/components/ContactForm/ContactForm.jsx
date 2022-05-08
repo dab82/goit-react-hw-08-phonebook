@@ -36,10 +36,9 @@ export const ContactForm = () => {
       resetForm();
       return;
     }
-
     newContact({ name, number });
-    resetForm();
     toast.success(`${name} is added to the phonebook `);
+    resetForm();
   };
 
   return (
