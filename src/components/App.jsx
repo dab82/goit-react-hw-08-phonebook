@@ -27,19 +27,21 @@ export const App = () => {
       <GlobalStyle />
 
       {isFetchingUser ? (
-        <SpinnerInfinity
-          color="#055770"
-          secondaryColor="rgba(0,0,0,0.1)"
-          size="100"
-          speed="150"
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            marginLeft: -50,
-            marginTop: -50,
-          }}
-        />
+        <div style={{ height: '80vh' }}>
+          <SpinnerInfinity
+            color="#055770"
+            secondaryColor="rgba(0,0,0,0.1)"
+            size="100"
+            speed="150"
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              marginLeft: -50,
+              marginTop: -50,
+            }}
+          />
+        </div>
       ) : (
         <>
           <AppBar />

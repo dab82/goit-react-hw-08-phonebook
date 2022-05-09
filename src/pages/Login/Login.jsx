@@ -56,7 +56,7 @@ const Login = () => {
             required
           />
 
-          <Button type="submit" text="Войти" />
+          <Button type="submit" children="Войти" />
         </SignInForm>
       </Formik>
     </Wrapper>

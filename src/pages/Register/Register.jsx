@@ -69,7 +69,7 @@ const Register = () => {
             required
           />
 
-          <Button type="submit" text=" Зарегистрироваться" />
+          <Button type="submit" children=" Зарегистрироваться" />
         </SignInForm>
       </Formik>
     </Wrapper>

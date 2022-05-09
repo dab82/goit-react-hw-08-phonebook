@@ -1,4 +1,5 @@
 import { Formik, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button } from '../Buttons/Button';
@@ -10,11 +11,22 @@ import {
 import propTypes from 'prop-types';
 import { SpinnerInfinity } from 'spinners-react';
 
-const initialValues = {
-  name: '',
-  number: '',
-  filter: '',
-};
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+const Schema = yup.object({
+  name: yup
+    .string()
+    .min(2, 'Too Short!')
+    .max(20, 'Too Long!')
+    .required('required field'),
+  number: yup
+    .string()
+    .required('required field')
+    .min(5, 'Too Short!')
+    .max(15, 'Too Long!')
+    .matches(phoneRegExp, 'phone number is not valid'),
+});
+
 const FormError = ({ name }) => {
   return (
     <ErrorMessage
@@ -43,35 +55,29 @@ export const ContactForm = () => {
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={{
+          name: '',
+          number: '',
+          filter: '',
+        }}
+        validationSchema={Schema}
+        onSubmit={handleSubmit}
+      >
         <AddForm autoComplete="off">
           <LabelForm htmlFor="name">Name</LabelForm>
 
-          <Input
-            type="text"
-            name="name"
-            placeholder="type name..."
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
+          <Input type="text" name="name" placeholder="type name..." />
           <FormError name="name" />
 
           <LabelForm htmlFor="number">Number</LabelForm>
 
-          <Input
-            type="tel"
-            name="number"
-            placeholder="type number..."
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
+          <Input type="tel" name="number" placeholder="type number..." />
           <FormError name="number" />
 
           <Button
             type="submit"
-            text={
+            children={
               isLoading ? (
                 <SpinnerInfinity
                   сolor="#910ac7"

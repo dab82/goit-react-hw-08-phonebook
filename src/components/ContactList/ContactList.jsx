@@ -6,15 +6,10 @@ import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
 import { SpinnerDotted } from 'spinners-react';
-import { authSelectors } from 'redux/auth';
 import { getvisibleContacts } from 'redux/filter/selector';
 
 export const ContactList = () => {
-  const token = useSelector(authSelectors.getToken);
-  const { data, isFetching, error, refetch } = useFetchContactsQuery();
-  useEffect(() => {
-    refetch();
-  }, [token, refetch]);
+  const { data, isFetching, error } = useFetchContactsQuery();
 
   useEffect(() => {
     if (error) {
