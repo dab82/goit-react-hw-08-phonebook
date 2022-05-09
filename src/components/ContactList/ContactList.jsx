@@ -1,15 +1,21 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { List } from './ContactListStyle';
+import { List, Total } from './ContactListStyle';
 import { useSelector } from 'react-redux';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useFetchContactsQuery } from '../../redux/api/contactsApi';
 import { SpinnerDotted } from 'spinners-react';
 import { getvisibleContacts } from 'redux/filter/selector';
+import { authSelectors } from 'redux/auth';
 
 export const ContactList = () => {
-  const { data, isFetching, error } = useFetchContactsQuery();
+  const { data, isFetching, error, refetch } = useFetchContactsQuery();
+  const token = useSelector(authSelectors.getToken);
+
+  useEffect(() => {
+    refetch();
+  }, [token, refetch]);
 
   useEffect(() => {
     if (error) {
@@ -22,7 +28,9 @@ export const ContactList = () => {
   return (
     <>
       {isFetching && !visibleContacts && <SpinnerDotted color="#055770" />}
-
+      {visibleContacts && (
+        <Total>Total contacts: {visibleContacts.length}</Total>
+      )}
       <List>
         {visibleContacts &&
           visibleContacts
