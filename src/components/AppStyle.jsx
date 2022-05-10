@@ -1,10 +1,27 @@
 import styled from 'styled-components';
-import { centerBlock, font, widthHeight } from '../mainstyle/mixins';
+import {
+  centerBlock,
+  font,
+  widthHeight,
+  deviceMin,
+  deviceMax,
+} from '../mainstyle/mixins';
 
 export const Container = styled.div`
   padding: 40px 30px;
   ${centerBlock};
-  max-width: 500px;
+  max-width: 600px;
+
+  @media ${deviceMin.desktop} {
+    max-width: 800px;
+  }
+
+  @media ${deviceMax.laptop} {
+    max-width: 500px;
+  }
+  @media ${deviceMax.mobileM} {
+    max-width: 360px;
+  }
   position: relative;
 `;
 

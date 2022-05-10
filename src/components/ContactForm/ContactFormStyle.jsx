@@ -1,13 +1,13 @@
 import { Form, Field } from 'formik';
 import styled from 'styled-components';
-import { font } from '../../mainstyle/mixins';
+import { font, deviceMax } from '../../mainstyle/mixins';
 
 export const AddForm = styled(Form)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding: 20px;
+  margin: 0 auto;
   border-radius: 5px;
   background-color: ${props => props.theme.colors.greyBg};
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.22), 0px 2px 2px rgba(0, 0, 0, 0.24),
@@ -17,7 +17,8 @@ export const AddForm = styled(Form)`
 export const Input = styled(Field)`
   border: 0;
   outline: 0;
-  margin-bottom: 10px;
+  width: 70%;
+  margin: 0 auto 10px auto;
   border-radius: 20px;
   padding: 10px 20px;
   background-color: ${props => props.theme.colors.buttonBg};
@@ -26,6 +27,11 @@ export const Input = styled(Field)`
     inset -5px -5px 10px ${props => props.theme.colors.white};
   transition: all 0.2s ease-in-out;
   appearance: none;
+
+  @media ${deviceMax.laptop} {
+    width: auto;
+    margin: 0 0 10px 0;
+  }
 
   &:focus {
     box-shadow: inset 1px 1px 2px var(--color-shadow),

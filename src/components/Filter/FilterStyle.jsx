@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { font } from '../../mainstyle/mixins';
+import { font, deviceMax } from '../../mainstyle/mixins';
 
 export const FilterInput = styled.input`
   border: 0;
@@ -24,4 +24,11 @@ export const FilterWrapper = styled.form`
   flex-direction: column;
   margin-bottom: 20px;
   padding: 20px;
+  width: 70%;
+  margin: 0 auto 10px auto;
+
+  @media ${deviceMax.laptop} {
+    width: auto;
+    margin: 0 0 10px 0;
+  }
 `;
