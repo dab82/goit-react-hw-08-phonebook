@@ -17,10 +17,7 @@ export const contactsApi = createApi({
     fetchContacts: builder.query({
       query: () => '/contacts',
       method: 'GET',
-      providesTags: result =>
-        result
-          ? result.map(({ id }) => ({ type: 'Contacts', id }))
-          : ['Contacts'],
+      providesTags: ['Contacts'],
     }),
 
     addContacts: builder.mutation({
