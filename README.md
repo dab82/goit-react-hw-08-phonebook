@@ -1,8 +1,12 @@
-# PhoneBook&deg;☎️
+# PhoneBook app ☎️
 
-## PhoneBook-app
+## Get started
 
-<h3 align="left"> Used stack:</h3>
+- `git clone ...`
+- `npm install`
+- `npm start`
+
+## Used stack:
 
 <p align="left">
    <a
@@ -91,17 +95,5 @@
         height="40"
       />
     </a>
-     <a
-      href="https://mui.com/"
-      target="_blank"
-      rel="noreferrer"
-      style="margin-right: 40px;"
-    >
-      <img
-        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
-        alt=MUI"
-        width="40"
-        height="40"
-      />
-    </a>
+     
 </p>
